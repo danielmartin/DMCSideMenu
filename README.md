@@ -1,11 +1,8 @@
-# RESideMenu
+# DMCSideMenu
 
 iOS 7/8 style side menu with parallax effect inspired by Dribbble shots ([first](http://dribbble.com/shots/1116265-Instasave-iPhone-App) and [second](http://dribbble.com/shots/1114754-Social-Feed-iOS7)).
 
 Since version 4.0 you can add menu view controllers on both left and right sides of your content view controller.
-
-<img src="https://github.com/romaonthego/RESideMenu/raw/master/Screenshot.png" alt="RESideMenu Screenshot" width="400" height="568" />
-<img src="https://raw.githubusercontent.com/romaonthego/RESideMenu/master/Demo.gif?2" alt="RESideMenu Screenshot" width="320" height="568" />
 
 ## Requirements
 * Xcode 6 or higher
@@ -13,15 +10,11 @@ Since version 4.0 you can add menu view controllers on both left and right sides
 * iOS 6.0 or higher
 * ARC
 
-## Demo
-
-Build and run the `RESideMenuExample` project in Xcode to see `RESideMenu` in action. For storyboards integration demo, build and run `RESideMenuStoryboardsExample`.
-
 ## Installation
 
 ### CocoaPods
 
-The recommended approach for installating `RESideMenu` is via the [CocoaPods](http://cocoapods.org/) package manager, as it provides flexible dependency management and dead simple installation.
+The recommended approach for installating `DMCSideMenu` is via the [CocoaPods](http://cocoapods.org/) package manager, as it provides flexible dependency management and dead simple installation.
 For best results, it is recommended that you install via CocoaPods >= **0.28.0** using Git >= **1.8.0** installed via Homebrew.
 
 Install CocoaPods if not already available:
@@ -39,11 +32,11 @@ $ touch Podfile
 $ edit Podfile
 ```
 
-Edit your Podfile and add RESideMenu:
+Edit your Podfile and add DMCSideMenu:
 
 ``` bash
 platform :ios, '6.0'
-pod 'RESideMenu', '~> 4.0.7'
+pod 'DMCSideMenu', '~> 4.0.7'
 ```
 
 Install into your Xcode project:
@@ -62,7 +55,7 @@ Please note that if your installation fails, it may be because you are installin
 
 ### Manual Install
 
-All you need to do is drop `RESideMenu` files into your project, and add `#include "RESideMenu.h"` to the top of classes that will use it.
+All you need to do is drop `DMCSideMenu` files into your project, and add `#include "DMCSideMenu.h"` to the top of classes that will use it.
 
 ## Example Usage
 
@@ -77,7 +70,7 @@ DEMORightMenuViewController *rightMenuViewController = [[DEMORightMenuViewContro
 
 // Create side menu controller
 //
-RESideMenu *sideMenuViewController = [[RESideMenu alloc] initWithContentViewController:navigationController
+DMCSideMenu *sideMenuViewController = [[DMCSideMenu alloc] initWithContentViewController:navigationController
                                                                 leftMenuViewController:leftMenuViewController
                                                                rightMenuViewController:rightMenuViewController];
 sideMenuViewController.backgroundImage = [UIImage imageNamed:@"Stars"];
@@ -102,7 +95,7 @@ or
 Switch content view controllers:
 
 ```objective-c
-#import <RESideMenu/RESideMenu.h>
+#import <DMCSideMenu/DMCSideMenu.h>
 
 ....
 
@@ -112,9 +105,9 @@ Switch content view controllers:
 
 ## Storyboards Example
 
-1. Create a subclass of `RESideMenu`. In this example we call it `DEMORootViewController`.
+1. Create a subclass of `DMCSideMenu`. In this example we call it `DEMORootViewController`.
 2. In the Storyboard designate the root view's owner as `DEMORootViewController`.
-3. Make sure to `#import "RESideMenu.h"` in `DEMORootViewController.h`.
+3. Make sure to `#import "DMCSideMenu.h"` in `DEMORootViewController.h`.
 4. Add more view controllers to your Storyboard, and give them identifiers "leftMenuViewController", "rightMenuViewController" and "contentViewController". Note that in the new XCode the identifier is called "Storyboard ID" and can be found in the Identity inspector.
 5. Add a method `awakeFromNib` to `DEMORootViewController.m` with the following code:
 
@@ -129,7 +122,7 @@ Switch content view controllers:
 
 ## Customization
 
-You can customize the following properties of `RESideMenu`:
+You can customize the following properties of `DMCSideMenu`:
 
 ``` objective-c
 @property (assign, readwrite, nonatomic) NSTimeInterval animationDuration;
@@ -162,14 +155,14 @@ You can customize the following properties of `RESideMenu`:
 
 If you set a backgroundImage, don't forget to set the Menu View Controller's background color to clear color.
 
-You can implement `RESideMenuDelegate` protocol to receive the following messages:
+You can implement `DMCSideMenuDelegate` protocol to receive the following messages:
 
 ```objective-c
-- (void)sideMenu:(RESideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer;
-- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController;
-- (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController;
-- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController;
-- (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer;
+- (void)sideMenu:(DMCSideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController;
 ```
 
 ## Contact
@@ -180,11 +173,17 @@ Roman Efimov
 - https://twitter.com/romaonthego
 - romefimov@gmail.com
 
+Daniel Martín
+
+- https://github.com/danielmartin
+- https://twitter.com/dmartincy
+
 ## License
 
-RESideMenu is available under the MIT license.
+DMCSideMenu is available under the MIT license.
 
 Copyright © 2013 Roman Efimov.
+Copyright © 2015 Daniel Martín
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

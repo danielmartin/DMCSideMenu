@@ -1,6 +1,6 @@
 //
-// UIViewController+RESideMenu.h
-// RESideMenu
+// RECommonFunctions.h
+// DMCSideMenu
 //
 // Copyright (c) 2013-2014 Roman Efimov (https://github.com/romaonthego)
 //
@@ -23,17 +23,25 @@
 // THE SOFTWARE.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
-@class RESideMenu;
 
-@interface UIViewController (RESideMenu)
+#ifndef REUIKitIsFlatMode
+#define REUIKitIsFlatMode() RESideMenuUIKitIsFlatMode()
+#endif
 
-@property (strong, readonly, nonatomic) RESideMenu *sideMenuViewController;
+#ifndef kCFCoreFoundationVersionNumber_iOS_6_1
+#define kCFCoreFoundationVersionNumber_iOS_6_1 793.00
+#endif
 
-// IB Action Helper methods
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
+#define IF_IOS7_OR_GREATER(...) \
+if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_6_1) \
+{ \
+__VA_ARGS__ \
+}
+#else
+#define IF_IOS7_OR_GREATER(...)
+#endif
 
-- (IBAction)presentLeftMenuViewController:(id)sender;
-- (IBAction)presentRightMenuViewController:(id)sender;
-
-@end
+BOOL RESideMenuUIKitIsFlatMode(void);

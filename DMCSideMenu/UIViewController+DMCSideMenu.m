@@ -1,8 +1,9 @@
 //
-// UIViewController+RESideMenu.m
-// RESideMenu
+// UIViewController+DMCSideMenu.m
+// DMCSideMenu
 //
 // Copyright (c) 2013-2014 Roman Efimov (https://github.com/romaonthego)
+// Copyright (c) 2015 Daniel Martín (https://github.com/danielmartin)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -23,17 +24,17 @@
 // THE SOFTWARE.
 //
 
-#import "UIViewController+RESideMenu.h"
-#import "RESideMenu.h"
+#import "UIViewController+DMCSideMenu.h"
+#import "DMCSideMenu.h"
 
-@implementation UIViewController (RESideMenu)
+@implementation UIViewController (DMCSideMenu)
 
-- (RESideMenu *)sideMenuViewController
+- (DMCSideMenu *)sideMenuViewController
 {
     UIViewController *iter = self.parentViewController;
     while (iter) {
-        if ([iter isKindOfClass:[RESideMenu class]]) {
-            return (RESideMenu *)iter;
+        if ([iter isKindOfClass:[DMCSideMenu class]]) {
+            return (DMCSideMenu *)iter;
         } else if (iter.parentViewController && iter.parentViewController != iter) {
             iter = iter.parentViewController;
         } else {

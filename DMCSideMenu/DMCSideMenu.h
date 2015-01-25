@@ -1,8 +1,9 @@
 //
-// REFrostedViewController.h
-// RESideMenu
+// DMCSideMenu.h
+// DMCSideMenu
 //
 // Copyright (c) 2013-2014 Roman Efimov (https://github.com/romaonthego)
+// Copyright (c) 2015 Daniel Martín (https://github.com/danielmartin)
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
@@ -24,15 +25,15 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "UIViewController+RESideMenu.h"
+#import "UIViewController+DMCSideMenu.h"
 
 #ifndef IBInspectable
 #define IBInspectable
 #endif
 
-@protocol RESideMenuDelegate;
+@protocol DMCSideMenuDelegate;
 
-@interface RESideMenu : UIViewController <UIGestureRecognizerDelegate>
+@interface DMCSideMenu : UIViewController <UIGestureRecognizerDelegate>
 
 #if __IPHONE_8_0
 @property (strong, readwrite, nonatomic) IBInspectable NSString *contentViewStoryboardID;
@@ -43,7 +44,7 @@
 @property (strong, readwrite, nonatomic) UIViewController *contentViewController;
 @property (strong, readwrite, nonatomic) UIViewController *leftMenuViewController;
 @property (strong, readwrite, nonatomic) UIViewController *rightMenuViewController;
-@property (weak, readwrite, nonatomic) id<RESideMenuDelegate> delegate;
+@property (weak, readwrite, nonatomic) id<DMCSideMenuDelegate> delegate;
 
 @property (assign, readwrite, nonatomic) NSTimeInterval animationDuration;
 @property (strong, readwrite, nonatomic) UIImage *backgroundImage;
@@ -84,13 +85,13 @@
 
 @end
 
-@protocol RESideMenuDelegate <NSObject>
+@protocol DMCSideMenuDelegate <NSObject>
 
 @optional
-- (void)sideMenu:(RESideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer;
-- (void)sideMenu:(RESideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController;
-- (void)sideMenu:(RESideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController;
-- (void)sideMenu:(RESideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController;
-- (void)sideMenu:(RESideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu didRecognizePanGesture:(UIPanGestureRecognizer *)recognizer;
+- (void)sideMenu:(DMCSideMenu *)sideMenu willShowMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu didShowMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu willHideMenuViewController:(UIViewController *)menuViewController;
+- (void)sideMenu:(DMCSideMenu *)sideMenu didHideMenuViewController:(UIViewController *)menuViewController;
 
 @end

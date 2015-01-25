@@ -1,6 +1,6 @@
 //
-// RECommonFunctions.h
-// RESideMenu
+// RECommonFunctions.m
+// DMCSideMenu
 //
 // Copyright (c) 2013-2014 Roman Efimov (https://github.com/romaonthego)
 //
@@ -23,25 +23,22 @@
 // THE SOFTWARE.
 //
 
-#import <Foundation/Foundation.h>
+#import "DMCCommonFunctions.h"
 
-
-#ifndef REUIKitIsFlatMode
-#define REUIKitIsFlatMode() RESideMenuUIKitIsFlatMode()
-#endif
-
-#ifndef kCFCoreFoundationVersionNumber_iOS_6_1
-#define kCFCoreFoundationVersionNumber_iOS_6_1 793.00
-#endif
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_6_1
-#define IF_IOS7_OR_GREATER(...) \
-if (kCFCoreFoundationVersionNumber > kCFCoreFoundationVersionNumber_iOS_6_1) \
-{ \
-__VA_ARGS__ \
+BOOL RESideMenuUIKitIsFlatMode(void)
+{
+    static BOOL isUIKitFlatMode = NO;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        if (floor(NSFoundationVersionNumber) > 993.0) {
+            // If your app is running in legacy mode, tintColor will be nil - else it must be set to some color.
+            if (UIApplication.sharedApplication.keyWindow) {
+                isUIKitFlatMode = [UIApplication.sharedApplication.delegate.window performSelector:@selector(tintColor)] != nil;
+            } else {
+                // Possible that we're called early on (e.g. when used in a Storyboard). Adapt and use a temporary window.
+                isUIKitFlatMode = [[UIWindow new] performSelector:@selector(tintColor)] != nil;
+            }
+        }
+    });
+    return isUIKitFlatMode;
 }
-#else
-#define IF_IOS7_OR_GREATER(...)
-#endif
-
-BOOL RESideMenuUIKitIsFlatMode(void);
